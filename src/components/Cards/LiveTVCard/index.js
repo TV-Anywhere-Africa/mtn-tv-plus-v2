@@ -24,7 +24,7 @@ const LiveTVCard = ({ content, showTitles, maxLines, isGridItem, subtitle }) => 
 
     if (!channelInfo) return (<></>)
 
-    return (
+    if (epgInfo && channelInfo) return (
         <>
             <Link to={`/watch/live/${channelInfo.uid}?title=${channelInfo.name}`}>
                 <div className={styles.card}>
@@ -32,10 +32,10 @@ const LiveTVCard = ({ content, showTitles, maxLines, isGridItem, subtitle }) => 
                         <img className="rounded-md h-[150px] w-full object-contain bg-[#000]" src={getVODImage(channelInfo.image_stores[0].id)} alt={"poster of " + epgInfo.title} />
                     </div> : <></>}
 
-                    {epgInfo ? <div>
+                    <div>
                         <p className="max-lines-1 text-sm mt-3 opacity-60">{capitalizeString(epgInfo.title.replace(/ *\([^)]*\) */g, ""))}</p>
                         <p className="text-sm">{epgInfo.start} - {epgInfo.end}</p>
-                    </div> : <></>}
+                    </div>
                 </div>
             </Link>
         </>
