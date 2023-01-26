@@ -26,6 +26,7 @@ export const checkDeviceIP = async (navigate) => {
         return !res.data.valid
 
     } catch (e) {
+
         // window.location.replace(routes.login)
     }
 }
