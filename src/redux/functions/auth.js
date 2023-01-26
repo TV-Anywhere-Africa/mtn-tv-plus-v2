@@ -21,9 +21,9 @@ export const checkDeviceIP = async (navigate) => {
             }
         })
 
-        if (!res.data.valid) navigate(routes.outOfRegion)
+        if (res.data.valid) navigate(routes.outOfRegion)
 
-        return res.data.valid
+        return !res.data.valid
 
     } catch (e) {
         // window.location.replace(routes.login)
