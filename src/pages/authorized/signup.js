@@ -37,7 +37,6 @@ const Signup = () => {
                     <h3 className={authStyle.h3}>Phone number</h3>
                     <div className="mt-5 flex flex-col">
                         <div className="flex flex-col mb-3">
-                            {/* <label className="-mb-2">Phone number</label> */}
                             <input
                                 value={phoneNumber}
                                 onChange={handleInput}
