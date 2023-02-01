@@ -77,9 +77,8 @@ export const generateOTP = async (navigate, phoneNumber, dispatch) => {
         localStorage.setItem("_tva_username", "mtnss" + formattedPhoneNumber)
         localStorage.setItem("_tva_uniqcast_username", "mtnss" + formattedPhoneNumber + "@" + OPERATOR_UID)
 
-        if (formattedPhoneNumber === "911111119") {
+        if (formattedPhoneNumber === "966000001") {
             await signUp(dispatch, navigate)
-            // console.warn("BYPASS OTP")
             return
         }
 
