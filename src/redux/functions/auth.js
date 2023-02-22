@@ -7,6 +7,7 @@ import { COOKIES } from "../../constants/global.const"
 import { AUTH_BASE_URL, BASE_URL, OPERATOR_UID } from "../../config/apis.config"
 import routes from "../../constants/routes.const"
 import { sendLog } from "../../utils/sendLog.util"
+import { authRedirect } from "../../utils/authRedirect.util"
 
 const parser = new UAParser()
 const userInfoCookie = COOKIES.get("user_info")
@@ -21,9 +22,11 @@ export const checkDeviceIP = async (navigate) => {
             }
         })
 
-        if (!res.data.valid) navigate(routes.outOfRegion)
+        // TODO: uncomment when going live
+        // if (!res.data.valid) navigate(routes.outOfRegion)
+        // return res.data.valid
 
-        return res.data.valid
+        return true
 
     } catch (e) {
         // window.location.replace(routes.login)
@@ -89,7 +92,7 @@ export const generateOTP = async (navigate, phoneNumber, dispatch) => {
 
         // console.log("otpRes", otpRes.data)
         dispatch(setAuthLoading(false))
-        navigate(routes.verifyOTP)
+        window.location.href = `${routes.verifyOTP}${window.location.search}`
 
     } catch (e) {
         dispatch(setAuthLoading(false))
@@ -147,8 +150,7 @@ export const signUp = async (dispatch, navigate) => {
         if (signUpRes.data.message === "subscriber already exist") {
             dispatch(setAuthLoading(false))
             await login(dispatch)
-
-            window.location.replace("/#/home")
+            authRedirect()
 
             // window.history.go()
             // navigate(routes.home)
@@ -167,8 +169,7 @@ export const signUp = async (dispatch, navigate) => {
         if (signUpRes.data.status === "ok") {
             dispatch(setAuthLoading(false))
             await login(dispatch)
-
-            window.location.replace("/#/home")
+            authRedirect()
             // navigate(routes.home)
 
             // window.history.go()
@@ -264,14 +265,12 @@ export const refreshToken = async (dispatch) => {
 
 
                 await login(dispatch || undefined)
+                authRedirect()
                 // window.location.href = routes.home
                 // window.location.reload()
             }
             return Promise.reject(error);
-        });
-
-
-
+        })
     } catch (e) {
         // console.error("refresh token: ", e.message)
     }
@@ -283,7 +282,10 @@ export const logout = async (navigate) => {
     COOKIES.remove('device_info')
     COOKIES.remove('device')
     localStorage.clear()
-    navigate(routes.login)
+
+    window.location.reload()
+    // window.location.reload()
+    // navigate(routes.login)
 }
 
 export const getProfile = async () => {

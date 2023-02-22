@@ -22,7 +22,7 @@ const Drawer = ({ showLogout, show, links, onClose }) => {
                         })
                     }
                     <div className="my-10" />
-                    {showLogout ? <Button label="Logout" action={() => logout(navigate)} /> : <></>}
+                    {showLogout ? <Button label="Logout" action={logout} /> : <></>}
                 </div>
             </div>
         </>

@@ -46,7 +46,8 @@ const Movie = () => {
                 const element = watchlist[i];
                 _ids.push(element.movie_id)
             }
-            if (_ids.includes(vodDetails.id)) setWatchlisted(true)
+            if (_ids.includes(vodDetails.id))
+                setWatchlisted(true)
             else setWatchlisted(false)
         }
         initCheckIsWatchlisted()

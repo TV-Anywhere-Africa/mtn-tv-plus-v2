@@ -1,3 +1,16 @@
+// import { COOKIES } from "../../constants/global.const"
+// import routes from "../../constants/routes.const"
+
+// const userInfoCookie = COOKIES.get("user_info")
+// const ProtectedRoute = ({ children }) => {
+// if (!userInfoCookie) {
+//     // window.location.href = `${routes.login}?redirect=${window.location.pathname}${window.location.search}`
+//     window.location.replace(`${routes.login}?redirect=${window.location.pathname}${window.location.search}`)
+// } else return children
+// }
+
+// export default ProtectedRoute
+
 import { useEffect, useState } from "react"
 import { Navigate, useNavigate } from "react-router-dom"
 import { COOKIES } from "../../constants/global.const"
@@ -6,23 +19,23 @@ import { checkDeviceIP } from "../../redux/functions/auth"
 import Loader from "../Loader"
 
 const ProtectedRoute = ({ children }) => {
-    const navigate=useNavigate()
+    const navigate = useNavigate()
     const userInfoCookie = COOKIES.get("user_info")
     const [loading, setLoading] = useState(true)
-    const [isIPValid, setIsIPValid] = useState(false)
 
     useEffect(() => {
         const initCheckIP = async () => {
             let x = await checkDeviceIP(navigate)
-            setIsIPValid(x)
             if (x) setLoading(false)
         }
         initCheckIP()
     }, [navigate])
 
     if (loading) return <Loader />
-    if (!userInfoCookie) return <Navigate replace to={routes.login} />
-    return children
+
+    if (!userInfoCookie) {
+        window.location.href = `${routes.login}?redirect=${window.location.pathname}${window.location.search}`
+    } else return children
 }
 
 export default ProtectedRoute

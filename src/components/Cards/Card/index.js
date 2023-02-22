@@ -22,7 +22,8 @@ const Card = ({ content, showTitles, type, maxLines, isGridItem, subtitle }) => 
 }
 
 const styles = {
-    gridCard: `mb-5`,
+    gridCard: `mb-5 bg-[#f5f3f31f] lg:min-h-[220px]`,
+    card: `mb-5 bg-[#f5f3f31f] lg:min-h-[220px]`,
 }
 
 export default Card

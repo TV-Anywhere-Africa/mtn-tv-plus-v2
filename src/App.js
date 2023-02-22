@@ -1,4 +1,4 @@
-import { Routes, Route, HashRouter } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import React from 'react';
 import './index.css';
 import PageNotFound from "./pages/pageNotFound";
@@ -19,7 +19,7 @@ import routes from "./constants/routes.const";
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Routes>
         <Route path={routes.home} element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route path={routes.movies} element={<ProtectedRoute><Movies /></ProtectedRoute>} />
@@ -37,7 +37,7 @@ function App() {
         <Route path="*" element={<PageNotFound />} />
         <Route index element={<Landing />} />
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 

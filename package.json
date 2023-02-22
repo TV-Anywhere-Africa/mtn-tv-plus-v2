@@ -2,7 +2,6 @@
   "name": "mtntv-plus",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://mtntv.mtn.com.ss/play/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.5",
@@ -14,6 +13,7 @@
     "react-dom": "^18.2.0",
     "react-hook-inview": "^4.5.0",
     "react-icons": "^4.7.1",
+    "react-lazy-load-image-component": "^1.5.6",
     "react-otp-input": "^2.4.0",
     "react-redux": "^8.0.5",
     "react-router": "^6.7.0",
