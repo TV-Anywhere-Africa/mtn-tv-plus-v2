@@ -46,6 +46,9 @@ const LiveTV = () => {
                 }
             }
 
+            // console.warn(channelIDs.toString())
+
+            // console.warn(await getChannelEPGInfo(channelIDs.toString()))
             setEPGs(await getChannelEPGInfo(channelIDs.toString()))
         }
 
@@ -60,6 +63,7 @@ const LiveTV = () => {
             <div className="my-20" />
             {
                 channelCategories ? channelCategories.map((channel, index) => {
+                    // console.log("EPGs", channel)
                     return (
                         <div key={channel.id + index}>
                             <LiveTVCarousel

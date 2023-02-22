@@ -60,7 +60,7 @@ export const getChannelCategories = async (dispatch) => {
             }
         )
 
-        console.warn("channelCategoriesRes", channelCategoriesRes)
+        // console.log("channelCategoriesRes", channelCategoriesRes.data)
 
         return channelCategoriesRes.data.data
     } catch (e) {

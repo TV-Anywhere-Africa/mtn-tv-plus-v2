@@ -4,7 +4,10 @@ import Slider from "react-slick"
 import LiveTVCard from "../Cards/LiveTVCard"
 
 const LiveTVCarousel = ({ maxLines = 2, showTitles = false, channel, items = [], title }) => {
-    if (items.length < 1 || !title) return (<></>)
+    // if (items.length < 1 || !title) return (<></>)
+
+    // console.log(channel)
+
     return (
         <>
             <div className="max-w-[2000px] px-5 py-[30px] pb-[10px] m-auto">
@@ -20,6 +23,8 @@ const LiveTVCarousel = ({ maxLines = 2, showTitles = false, channel, items = [],
                                 })
 
                                 if (_epg.length > 0) _vod.shows = _epg[0].shows
+
+                                // console.log("_VOD", _vod)
 
                                 return (
                                     <LiveTVCard
