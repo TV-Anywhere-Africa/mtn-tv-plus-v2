@@ -32,7 +32,7 @@ const Movies = () => {
             let x = {
                 title: content.title,
                 description: content.description,
-                watchLink: `/watch/live/${content.link}`,
+                watchLink: `/watch/movie/${content.link}`,
                 bgImage: getVODImage(content.preview_image_id),
                 video: "",
                 id: content.id,

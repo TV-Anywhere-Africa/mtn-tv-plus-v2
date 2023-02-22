@@ -49,6 +49,7 @@ export const getUserChannels = async () => {
 }
 
 export const getChannelCategories = async (dispatch) => {
+    console.log("getting channel categories")
     try {
         const channelCategoriesRes = await axios.get(
             VOD_BASE_URL + `/api/client/v1/${OPERATOR_UID}/categories/channels`,
@@ -59,7 +60,7 @@ export const getChannelCategories = async (dispatch) => {
             }
         )
 
-        // console.warn("channelCategoriesRes", channelCategoriesRes)
+        console.warn("channelCategoriesRes", channelCategoriesRes)
 
         return channelCategoriesRes.data.data
     } catch (e) {

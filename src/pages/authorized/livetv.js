@@ -33,6 +33,8 @@ const LiveTV = () => {
             const channelIDs = []
             const _channelCategories = await getChannelCategories(dispatch)
 
+            console.log("_channelCategories", _channelCategories)
+
             if (_channelCategories) setChannelCategories(_channelCategories)
 
             for (let i = 0; i < _channelCategories.length; i++) {
