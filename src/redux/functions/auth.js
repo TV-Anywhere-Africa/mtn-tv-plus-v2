@@ -23,10 +23,10 @@ export const checkDeviceIP = async (navigate) => {
         })
 
         // TODO: uncomment when going live
-        // if (!res.data.valid) navigate(routes.outOfRegion)
-        // return res.data.valid
+        if (!res.data.valid) navigate(routes.outOfRegion)
+        return res.data.valid
 
-        return true
+        // return true
 
     } catch (e) {
         // window.location.replace(routes.login)
