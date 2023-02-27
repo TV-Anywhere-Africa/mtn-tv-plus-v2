@@ -39,7 +39,7 @@ const ProtectedRoute = ({ children }) => {
 
         sessionStorage.setItem("redirect", currentRoute)
 
-        window.location.href = `https://mtntv.mtn.ss/play${routes.login}`
+        window.location.href = `https://mtn-tv-plus-no-ip.vercel.app/${routes.login}`
 
         // window.location.href = `/ play${ routes.login } `
 

@@ -20,7 +20,7 @@ export const authRedirect = (navigate) => {
 
     } else {
 
-        window.location.href = `/play${routes.home}`
+        window.location.href = `${routes.home}`
 
         // navigate(`${routes.home}`)
         // window.location.reload()

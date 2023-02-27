@@ -19,7 +19,7 @@ import routes from "./constants/routes.const";
 
 function App() {
   return (
-    <BrowserRouter basename="/play">
+    <BrowserRouter>
       <Routes>
         <Route path={routes.home} element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route path={routes.movies} element={<ProtectedRoute><Movies /></ProtectedRoute>} />
