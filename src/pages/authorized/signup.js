@@ -17,7 +17,10 @@ const Signup = () => {
     useEffect(() => {
         const initGetMSISDN = () => {
             let x = getMSISDN()
-            if (x) setPhoneNumber(x.toString())
+            if (x) {
+                setPhoneNumber(x.toString())
+                setShowAuthButton(true)
+            }
         }
         initGetMSISDN()
     }, [])

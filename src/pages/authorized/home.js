@@ -13,8 +13,9 @@ const Home = () => {
 
     useEffect(() => {
         const init = async () => {
-            if (await getCategoryMovies())
+            if (await getCategoryMovies()) {
                 setCategoryMovies(await getCategoryMovies())
+            }
         }
         init()
     }, [])

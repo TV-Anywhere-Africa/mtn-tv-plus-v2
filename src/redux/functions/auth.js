@@ -92,7 +92,12 @@ export const generateOTP = async (navigate, phoneNumber, dispatch) => {
 
         // console.log("otpRes", otpRes.data)
         dispatch(setAuthLoading(false))
-        window.location.href = `${routes.verifyOTP}${window.location.search}`
+
+        console.log(navigate)
+
+        navigate(routes.verifyOTP)
+        // window.location.href = `/play${routes.verifyOTP}${window.location.search}`
+        // window.location.reload()
 
     } catch (e) {
         dispatch(setAuthLoading(false))
@@ -150,7 +155,7 @@ export const signUp = async (dispatch, navigate) => {
         if (signUpRes.data.message === "subscriber already exist") {
             dispatch(setAuthLoading(false))
             await login(dispatch)
-            authRedirect()
+            authRedirect(navigate)
 
             // window.history.go()
             // navigate(routes.home)
@@ -169,7 +174,7 @@ export const signUp = async (dispatch, navigate) => {
         if (signUpRes.data.status === "ok") {
             dispatch(setAuthLoading(false))
             await login(dispatch)
-            authRedirect()
+            authRedirect(navigate)
             // navigate(routes.home)
 
             // window.history.go()
@@ -267,7 +272,7 @@ export const refreshToken = async (dispatch) => {
                 await login(dispatch || undefined)
                 authRedirect()
                 // window.location.href = routes.home
-                // window.location.reload()
+                window.location.reload()
             }
             return Promise.reject(error);
         })
@@ -278,14 +283,16 @@ export const refreshToken = async (dispatch) => {
 
 export const logout = async (navigate) => {
     await sendLog({ action: "logout" })
-    COOKIES.remove('user_info')
-    COOKIES.remove('device_info')
-    COOKIES.remove('device')
+
     localStorage.clear()
+    sessionStorage.clear()
+    document.cookie.split(";").forEach((c) => {
+        document.cookie = c
+            .replace(/^ +/, "")
+            .replace(/=.*/, `=;expires=${new Date().toUTCString()};path=/`);
+    })
 
     window.location.reload()
-    // window.location.reload()
-    // navigate(routes.login)
 }
 
 export const getProfile = async () => {

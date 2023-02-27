@@ -4,7 +4,7 @@
 // const userInfoCookie = COOKIES.get("user_info")
 // const ProtectedRoute = ({ children }) => {
 // if (!userInfoCookie) {
-//     // window.location.href = `${routes.login}?redirect=${window.location.pathname}${window.location.search}`
+//     // window.location.href = `/play/#${routes.login}?redirect=${window.location.pathname}${window.location.search}`
 //     window.location.replace(`${routes.login}?redirect=${window.location.pathname}${window.location.search}`)
 // } else return children
 // }
@@ -34,7 +34,26 @@ const ProtectedRoute = ({ children }) => {
     if (loading) return <Loader />
 
     if (!userInfoCookie) {
-        window.location.href = `${routes.login}?redirect=${window.location.pathname}${window.location.search}`
+
+        const currentRoute = `${window.location.pathname}${window.location.search}`
+
+        sessionStorage.setItem("redirect", currentRoute)
+
+        window.location.href = `https://mtntv.mtn.ss/play${routes.login}`
+
+        // window.location.href = `/ play${ routes.login } `
+
+        // const redirectUrl = `${ window.location.pathname } #${ encodeURIComponent(`redirect=${currentRoute}`) } `; // Create redirect URL with encoded 'redirect' parameter
+        // window.location.href = redirectUrl; // Redirect to the new URL
+
+
+        //https://example.com/login#redirectUrl=https://example.com/profile
+
+        // window.location.href=`#${ routes.login }?redirect = ${ window.location.pathname }${ window.location.search } `
+
+
+
+        // window.location.href = `/ play / #${ routes.login }?redirect = ${ window.location.pathname }${ window.location.search } `
     } else return children
 }
 
