@@ -15,16 +15,18 @@ const { access_token } = userInfoCookie || {}
 
 export const checkDeviceIP = async (navigate) => {
     try {
-        const res = await axios.get(`https://tvanywhereonline.com/cm/api/auth/?operator_uid=${OPERATOR_UID}`, {
-            headers: {
-                'Password': 'tva12345#',
-                'Username': 'tva'
-            }
-        })
-
         // TODO: uncomment when going live
-        if (!res.data.valid) navigate(routes.outOfRegion)
-        return res.data.valid
+        // const res = await axios.get(`https://tvanywhereonline.com/cm/api/auth/?operator_uid=${OPERATOR_UID}`, {
+        //     headers: {
+        //         'Password': 'tva12345#',
+        //         'Username': 'tva'
+        //     }
+        // })
+
+        // if (!res.data.valid) navigate(routes.outOfRegion)
+        // return res.data.valid
+
+        return true
 
         // return true
 
