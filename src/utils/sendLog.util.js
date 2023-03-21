@@ -28,7 +28,7 @@ export const sendLog = async (data) => {
         let logMessage
         let deviceInfoCookie = COOKIES.get("device_info")
         let device_id = COOKIES.get("device")
-        let user_uid = window.localStorage.getItem("_tva_username")
+        let user_uid = window.localStorage.getItem("tva_username")
         let device_platform = deviceInfoCookie.os.name
         let device_name = deviceInfoCookie.browser.name
         let durationInt = 0

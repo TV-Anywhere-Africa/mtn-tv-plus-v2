@@ -82,7 +82,7 @@ const Movie = () => {
                                 <h1 className="text-2xl lg:text-4xl text-secondary font-medium mb-3">{vodDetails.title}</h1>
                                 <div className="flex items-center mb-3">
 
-                                    <Link to={"/watch/movie/" + vodDetails.uid + "?title=" + vodDetails.title} className="hover:opacity-50 transition-all">
+                                    <Link to={"/watch/movie/" + vodDetails.uid + "?title=" + vodDetails.title + "&id=" + vodDetails.id} className="hover:opacity-50 transition-all">
                                         <div className="bg-[#fff] w-[50px] h-[50px] pl-1 flex items-center justify-center rounded-full">
                                             <FiPlay color="#000" fill="#000" size={30} />
                                         </div>

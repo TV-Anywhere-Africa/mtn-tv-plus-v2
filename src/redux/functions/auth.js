@@ -8,6 +8,7 @@ import { AUTH_BASE_URL, BASE_URL, OPERATOR_UID } from "../../config/apis.config"
 import routes from "../../constants/routes.const"
 import { sendLog } from "../../utils/sendLog.util"
 import { authRedirect } from "../../utils/authRedirect.util"
+import { isValidEmail } from "../../utils/validators.utils"
 
 const parser = new UAParser()
 const userInfoCookie = COOKIES.get("user_info")
@@ -64,9 +65,9 @@ export const generateOTP = async (navigate, phoneNumber, dispatch) => {
 
             // console.log("MSISDN valid", formattedPhoneNumber, msisdn)
 
-            localStorage.setItem("_tva_mobile_number", formattedPhoneNumber)
-            localStorage.setItem("_tva_username", "mtnss" + formattedPhoneNumber)
-            localStorage.setItem("_tva_uniqcast_username", "mtnss" + formattedPhoneNumber + "@" + OPERATOR_UID)
+            localStorage.setItem("tva_mobile_number", formattedPhoneNumber)
+            localStorage.setItem("tva_username", "mtnss" + formattedPhoneNumber)
+            localStorage.setItem("tva_uniqcast_username", "mtnss" + formattedPhoneNumber + "@" + OPERATOR_UID)
             signUp(dispatch)
 
             return
@@ -76,9 +77,9 @@ export const generateOTP = async (navigate, phoneNumber, dispatch) => {
 
         dispatch(setAuthLoading(true))
 
-        localStorage.setItem("_tva_mobile_number", formattedPhoneNumber)
-        localStorage.setItem("_tva_username", "mtnss" + formattedPhoneNumber)
-        localStorage.setItem("_tva_uniqcast_username", "mtnss" + formattedPhoneNumber + "@" + OPERATOR_UID)
+        localStorage.setItem("tva_mobile_number", formattedPhoneNumber)
+        localStorage.setItem("tva_username", "mtnss" + formattedPhoneNumber)
+        localStorage.setItem("tva_uniqcast_username", "mtnss" + formattedPhoneNumber + "@" + OPERATOR_UID)
 
         if (formattedPhoneNumber === "966000001") {
             await signUp(dispatch, navigate)
@@ -118,7 +119,7 @@ export const verifyOTP = async (otp, dispatch, navigate) => {
 
         const otpRes = await axios.post(
             BASE_URL + `/api/otp/?operator_uid=${OPERATOR_UID}&mode=validate`, {
-            mobile_number: localStorage.getItem("_tva_mobile_number"),
+            mobile_number: localStorage.getItem("tva_mobile_number"),
             otp: otp
         })
 
@@ -148,18 +149,14 @@ export const signUp = async (dispatch, navigate) => {
             BASE_URL + `/api/subscriber/?operator_uid=${OPERATOR_UID}`, {
             first_name: "MTN",
             last_name: "SSD",
-            phone_number: localStorage.getItem("_tva_mobile_number"),
-            username: localStorage.getItem("_tva_username"),
+            phone_number: localStorage.getItem("tva_mobile_number"),
+            username: localStorage.getItem("tva_username"),
         })
 
         if (signUpRes.data.message === "subscriber already exist") {
             dispatch(setAuthLoading(false))
             await login(dispatch)
             authRedirect(navigate)
-
-            // window.history.go()
-            // navigate(routes.home)
-            // return
         }
 
         if (
@@ -175,10 +172,6 @@ export const signUp = async (dispatch, navigate) => {
             dispatch(setAuthLoading(false))
             await login(dispatch)
             authRedirect(navigate)
-            // navigate(routes.home)
-
-            // window.history.go()
-            // return
         }
 
     } catch (e) {
@@ -188,7 +181,7 @@ export const signUp = async (dispatch, navigate) => {
     }
 }
 
-const getGlobalKeys = async () => {
+export const getGlobalKeys = async () => {
     const getGlobalKeys = await axios.get("https://tvanywhereonline.com/cm/api/client/?operator_uid=mtnssd&mode=web")
     return getGlobalKeys.data.data
 }
@@ -204,13 +197,15 @@ export const login = async (dispatch) => {
 
         const loginRes = await axios.post(
             AUTH_BASE_URL + `/api/client/v1/global/login`, {
-            username: localStorage.getItem("_tva_uniqcast_username"),
+            username: localStorage.getItem("tva_uniqcast_username"),
             password: globalKeys.defaultpassword,
             device: deviceId,
             device_class: deviceInfo.device.type ? deviceInfo.device.type : "Desktop",
             device_type: deviceInfo.device.vendor || "Desktop",
             device_os: "Windows",
         })
+
+        localStorage.setItem("tva_subscriber_uid", `mtnss${localStorage.getItem("tva_mobile_number")}`)
 
         if (loginRes.data.status === "ok") {
             COOKIES.set("user_info", loginRes.data.data, { path: "/" })
@@ -296,7 +291,7 @@ export const logout = async (navigate) => {
 }
 
 export const getProfile = async () => {
-    let username = localStorage.getItem('_tva_username')
+    let username = localStorage.getItem('tva_username')
 
     const profileRes = await axios.get(BASE_URL + `/api/subscriber/?operator_uid=${OPERATOR_UID}&subscriber_uid=${username}&limit=30`,
         {
@@ -306,5 +301,5 @@ export const getProfile = async () => {
         }
     )
 
-    localStorage.setItem("_tva_profile", JSON.stringify(profileRes.data.data[0]))
+    localStorage.setItem("tva_profile", JSON.stringify(profileRes.data.data[0]))
 }

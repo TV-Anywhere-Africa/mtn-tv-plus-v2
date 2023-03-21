@@ -34,7 +34,7 @@ const Header = () => {
 
     useEffect(() => {
         try {
-            let storedProfile = JSON.parse(localStorage.getItem("_tva_profile"))
+            let storedProfile = JSON.parse(localStorage.getItem("tva_profile"))
             setName(storedProfile.first_name)
         } catch (e) {
             // console.error(e)

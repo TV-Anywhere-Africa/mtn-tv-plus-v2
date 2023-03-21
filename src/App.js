@@ -16,6 +16,7 @@ import LiveTV from "./pages/authorized/livetv";
 import ProtectedRoute from "./components/ProtectedRoute";
 import OutOfRegion from "./pages/outOfRegion";
 import routes from "./constants/routes.const";
+import Packages from "./pages/authorized/packages";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path={routes.movies} element={<ProtectedRoute><Movies /></ProtectedRoute>} />
         <Route path={routes.livetv} element={<ProtectedRoute><LiveTV /></ProtectedRoute>} />
         <Route path={routes.account} element={<ProtectedRoute><Account /></ProtectedRoute>} />
+        <Route path={routes.packages} element={<ProtectedRoute><Packages /></ProtectedRoute>} />
         <Route path={routes.outOfRegion} element={<OutOfRegion />} />
         <Route path="/search" element={<ProtectedRoute><Search /></ProtectedRoute>} />
         <Route path="/vod/movie/:id" element={<ProtectedRoute><Movie /></ProtectedRoute>} />

@@ -7,6 +7,7 @@ const routes = {
     livetv: "/live-tv",
     search: "/search",
     account: "/account",
+    packages: "/packages",
     home: "/home"
 }
 
