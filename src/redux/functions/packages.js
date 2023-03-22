@@ -5,13 +5,14 @@ import { COOKIES } from "../../constants/global.const"
 const userInfoCookie = COOKIES.get("user_info")
 const { operator_uid } = userInfoCookie || {}
 
-export const networkPurchase = async (packageId, subscriptionType, navigate) => {
-    if (!packageId || !navigate || !subscriptionType) return
+export const networkPurchase = async (packageDetails, subscriptionType, navigate) => {
+    if (!navigate || !packageDetails) return
+
+    let packageId = subscriptionType === "auto-renewal" ? packageDetails.autorenewalId : packageDetails.id
 
     await axios.post(`https://tvanywhereonline.com/cm/api/purchase/?operator_uid=${operator_uid}`, {
         "subscriber_uid": localStorage.getItem("tva_subscriber_uid"),
-        // "subscription_type": subscriptionType,
-        "subscription_type": "one-off",
+        "subscription_type": subscriptionType || "one-off",
         "bill": true,
         "product_id": packageId
     }).then(response_ => {

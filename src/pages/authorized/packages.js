@@ -22,7 +22,7 @@ const Packages = () => {
     const [purchasing, setPurchasing] = useState(false)
     const [selectedPackage, setSelectedPackage] = useState({})
     const [onProceed, setOnProceed] = useState(false)
-    const [subscriptionType, setSubscriptionType] = useState('auto-renewal');
+    const [subscriptionType, setSubscriptionType] = useState('');
 
     const handleCheckboxChange = (e) => {
         if (e.target.name === 'autorenewal' && e.target.checked) {
@@ -38,10 +38,11 @@ const Packages = () => {
 
     const onPurchasePackage = async () => {
         setPurchasing(true)
-        await networkPurchase(selectedPackage.id, subscriptionType, navigate)
+        await networkPurchase(selectedPackage, subscriptionType, navigate)
         setOnProceed(false)
         setShowPurchaseModal(false)
         setPurchasing(false)
+        setSubscriptionType("")
     }
 
     return (
@@ -52,16 +53,15 @@ const Packages = () => {
                     {!onProceed ? <div>
                         <h2 className="font-[500] mb-5">Buy {selectedPackage.name} at  {selectedPackage.price}</h2>
                         <div className="flex items-center justify-center gap-3 mb-3">
-                            <label className="flex items-center gap-1">
+                            {selectedPackage.hasAutorenewal && <label className="flex items-center gap-1">
                                 <input
                                     type="checkbox"
                                     name="autorenewal"
                                     checked={subscriptionType === 'auto-renewal'}
                                     onChange={handleCheckboxChange}
                                 />
-                                Autorenewal
-                            </label>
-                            <br />
+                                Auto-renewal
+                            </label>}
                             <label className="flex items-center gap-1">
                                 <input
                                     type="checkbox"
@@ -78,16 +78,15 @@ const Packages = () => {
                     </h2>}
                     <div className="flex items-center justify-center">
                         {!onProceed
-                            ? <Button label={`Proceed`} action={() => setOnProceed(true)} />
+                            ? <div>{subscriptionType && <Button label={`Proceed`} action={() => setOnProceed(true)} />}</div>
                             : <Button isDisabled={purchasing} label={purchasing ? "loading..." : `Buy ${selectedPackage.price}`} action={onPurchasePackage} />}
-                        <p
-                            onClick={() => {
+                        <div>
+                            <p onClick={() => {
                                 setOnProceed(false)
                                 setShowPurchaseModal(false)
-                            }}
-                            className="ml-3 cursor-pointer hover:opacity-50 transition-all">
-                            Cancel
-                        </p>
+                                setSubscriptionType("")
+                            }} className="ml-3 cursor-pointer hover:opacity-50 transition-all">Cancel</p>
+                        </div>
                     </div>
                 </div>
             </div> : <></>}
