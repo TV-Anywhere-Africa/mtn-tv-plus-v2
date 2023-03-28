@@ -84,12 +84,11 @@ const Watch = () => {
 
     useEffect(() => {
         const initGetVideo = async () => {
-            console.log("getting vido")
+            console.log("getting video")
             let videoRes = await getVideo(id, type, dispatch, params.id, query.get("title") || "")
             console.log("videoRes", videoRes)
             if (videoRes) setVideoSource(videoRes.url)
         }
-
 
         if (!isPurchasedLoading) initGetVideo()
     }, [isPurchasedLoading])

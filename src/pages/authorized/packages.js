@@ -16,7 +16,6 @@ const Packages = () => {
 
     const [previousPage, setPreviousPage] = useState("")
     const [packages, setPackages] = useState(NETWORK_PACKAGES)
-    const [fwPublicKey, setFWPublicKey] = useState()
     const [price, setPrice] = useState(0)
     const [showPurchaseModal, setShowPurchaseModal] = useState(false)
     const [purchasing, setPurchasing] = useState(false)
