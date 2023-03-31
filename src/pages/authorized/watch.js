@@ -135,7 +135,6 @@ const Watch = () => {
     }
 
     const onMovieEnd = async () => {
-        // console.warn("onMovieEnd")
         const _secondsInt = secondsPlayed
         _secondsInt.replace(',', '')
         await sendLog({
