@@ -28,8 +28,6 @@ const Watch = () => {
     useEffect(() => {
         const checkIsPurchased = async () => {
 
-            console.log(id, type, dispatch)
-
             try {
                 setIsPurchasedLoading(true)
 
@@ -37,34 +35,49 @@ const Watch = () => {
                 if (type === "series") details = await getSeriesDetails(query.get("id"), dispatch)
                 if (type === "movie") details = await getMovieDetails(query.get("id"), '', dispatch)
 
-                console.log('details', details.packages)
+                console.log('details', details)
 
                 if (type === "live") {
+                    console.log('is live')
                     let userChannels = await getUserChannels()
                     let channel
 
                     for (let a = 0; a < userChannels.length; a++) {
                         const element = userChannels[a];
 
+                        // console.log('element.id', element.id, '===', Number(query.get("id")))
+
                         if (element.id === Number(query.get("id"))) {
                             channel = element
+                            console.log('channel = element', element)
                         }
                     }
 
-                    if (typeof channel.purchased !== "string") redirectToPurchasePage()
-                    else setIsPurchasedLoading(false)
+                    console.log('userChannels', userChannels)
+                    console.log('channel', typeof channel.purchased)
+
+                    //     console.log('live', channel)
+
+                    if (typeof channel.purchased !== "string") {
+                        console.log('no package')
+                        redirectToPurchasePage()
+                    } else setIsPurchasedLoading(false)
                 }
 
                 let packages_ = await getPackages()
 
-                console.log('packages_', packages_.purchasedPackages)
-                console.log(arraysHaveCommonElements(details.packages, packages_.purchasedPackages))
+                console.log('packages_', packages_)
+
+                // console.log('packages_', packages_.purchasedPackages)
+                // console.log(arraysHaveCommonElements(details.packages, packages_.purchasedPackages))
 
                 if (!arraysHaveCommonElements(details.packages, packages_.purchasedPackages))
                     redirectToPurchasePage()
                 else setIsPurchasedLoading(false)
             } catch (error) {
                 console.log(error.message)
+
+                if (error.message === 'channel is undefined') redirectToPurchasePage()
                 // toast.error(error.message)
                 // setIsPurchasedLoading(false)
             }

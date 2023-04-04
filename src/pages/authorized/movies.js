@@ -29,10 +29,11 @@ const Movies = () => {
     useEffect(() => {
         const initSetBannerDetails = async () => {
             let content = await getBannerContent()
+            console.log('content', content)
             let x = {
                 title: content.title,
                 description: content.description,
-                watchLink: `/watch/movie/${content.link}`,
+                watchLink: `/watch/movie/${content.link}?title=${content.title}&id=${content.content_id}`,
                 bgImage: getVODImage(content.preview_image_id),
                 video: "",
                 id: content.id,

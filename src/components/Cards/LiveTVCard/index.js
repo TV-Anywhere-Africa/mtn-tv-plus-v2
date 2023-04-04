@@ -26,7 +26,7 @@ const LiveTVCard = ({ content, showTitles, maxLines, isGridItem, subtitle, id })
 
     return (
         <>
-            <Link to={`/watch/live/${channelInfo.uid}?title=${channelInfo.name}&id=${id}`}>
+            <Link to={`/watch/live/${channelInfo.uid}?title=${channelInfo.name}&id=${channelInfo.id}`}>
                 <div className={styles.card}>
                     {channelInfo.image_stores && channelInfo.image_stores[0] && epgInfo ? <div>
                         <img className="rounded-md h-[150px] w-full object-contain bg-[#000]" src={getVODImage(channelInfo.image_stores[0].id)} alt={"poster of " + epgInfo.title} />

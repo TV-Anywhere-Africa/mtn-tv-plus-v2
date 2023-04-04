@@ -71,12 +71,11 @@ const Header = () => {
                             <nav className="lg:flex items-center hidden">
                                 {
                                     AUTHORIZED_NAV_LINKS.map((link, i) => {
-                                        if (link.link !== routes.account)
-                                            return (
-                                                <Link key={i} to={link.link}>
-                                                    <p className={location.pathname === link.link ? styles.activeNavLink : styles.navLink}>{link.name}</p>
-                                                </Link>
-                                            )
+                                        if (link.link !== routes.account) return (
+                                            <Link key={i} to={link.link}>
+                                                <p className={location.pathname === link.link ? styles.activeNavLink : styles.navLink}>{link.name}</p>
+                                            </Link>
+                                        )
                                     })
                                 }
                             </nav> : <></>}

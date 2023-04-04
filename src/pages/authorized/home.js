@@ -23,11 +23,12 @@ const Home = () => {
     useEffect(() => {
         const initSetBannerDetails = async () => {
             let content = await getBannerContent()
+            console.log('content', content)
             if (content) {
                 let x = {
                     title: content.title,
                     description: content.description,
-                    watchLink: `/watch/live/${content.link}?title=${content.title}`,
+                    watchLink: `/watch/movie/${content.link}?title=${content.title}&id=${content.content_id}`,
                     bgImage: getVODImage(content.preview_image_id),
                     video: "",
                     id: content.id,
