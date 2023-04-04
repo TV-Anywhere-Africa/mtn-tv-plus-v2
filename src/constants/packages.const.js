@@ -2,7 +2,7 @@ export const NETWORK_PACKAGES = [
     {
         name: "MTN TV 7 Days",
         accessTo: "Enjoy unlimited access to all movies, series, and Free Live Channels",
-        price: "SSP 100",
+        price: "SSP 2500",
         validityPeriod: "7 days",
         uid: "mtntv7days",
         id: "966",
@@ -12,7 +12,7 @@ export const NETWORK_PACKAGES = [
     }, {
         name: "MTN TV 30 Days",
         accessTo: "Enjoy unlimited access to all movies, series, and Free Live Channels",
-        price: "SSP 100",
+        price: "SSP 9000",
         validityPeriod: "30 days",
         uid: "mtntv30days",
         id: "962",
@@ -22,15 +22,15 @@ export const NETWORK_PACKAGES = [
     }, {
         name: "MTN TV hourly 1 hour",
         accessTo: "Enjoy unlimited access to all movies, series, and Free Live Channels",
-        price: "SSP 100",
-        validityPeriod: "1 days",
+        price: "SSP 80",
+        validityPeriod: "1 day",
         uid: "mtntv1hour",
         id: "953",
         hasAutorenewal: false,
     }, {
         name: "MTN TV 3 days",
         accessTo: "Enjoy unlimited access to all movies, series, and Free Live Channels",
-        price: "SSP 100",
+        price: "SSP 1200",
         validityPeriod: "3 years",
         uid: "mtntv3days",
         id: "944",
@@ -40,7 +40,7 @@ export const NETWORK_PACKAGES = [
     }, {
         name: "MTN TV Daily 24 hours",
         accessTo: "Enjoy unlimited access to all movies, series, and Free Live Channels",
-        price: "SSP 100",
+        price: "SSP 500",
         validityPeriod: "1 day",
         uid: "mtntv24hours",
         id: "943",
