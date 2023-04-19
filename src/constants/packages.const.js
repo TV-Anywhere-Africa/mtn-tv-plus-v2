@@ -20,7 +20,7 @@ export const NETWORK_PACKAGES = [
         autorenewalUid: "mtntv24hoursautorenewal"
     },
     {
-        name: "MTN TV 3 DAYS",
+        name: "MTN TV PLUS 3 DAYS",
         accessTo: "Enjoy unlimited access to all movies, series, and Free Live Channels",
         price: "SSP 1200",
         validityPeriod: "3 days",
@@ -31,7 +31,7 @@ export const NETWORK_PACKAGES = [
         autorenewalUid: "mtntv3daysautorenewal"
     },
     {
-        name: "MTN TV 7 DAYS",
+        name: "MTN TV PLUS 7 DAYS",
         accessTo: "Enjoy unlimited access to all movies, series, and Free Live Channels",
         price: "SSP 2500",
         validityPeriod: "7 days",
@@ -42,7 +42,7 @@ export const NETWORK_PACKAGES = [
         autorenewalUid: "mtntv7daysautorenewal"
     },
     {
-        name: "MTN TV 30 DAYS",
+        name: "MTN TV PLUS 30 DAYS",
         accessTo: "Enjoy unlimited access to all movies, series, and Free Live Channels",
         price: "SSP 9000",
         validityPeriod: "30 days",
