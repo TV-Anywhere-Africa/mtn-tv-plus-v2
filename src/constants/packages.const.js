@@ -1,44 +1,15 @@
 export const NETWORK_PACKAGES = [
     {
-        name: "MTN TV 7 Days",
-        accessTo: "Enjoy unlimited access to all movies, series, and Free Live Channels",
-        price: "SSP 2500",
-        validityPeriod: "7 days",
-        uid: "mtntv7days",
-        id: "966",
-        hasAutorenewal: true,
-        autorenewalId: "1008",
-        autorenewalUid: "mtntv7daysautorenewal"
-    }, {
-        name: "MTN TV 30 Days",
-        accessTo: "Enjoy unlimited access to all movies, series, and Free Live Channels",
-        price: "SSP 9000",
-        validityPeriod: "30 days",
-        uid: "mtntv30days",
-        id: "962",
-        hasAutorenewal: true,
-        autorenewalId: "1009",
-        autorenewalUid: "mtntv30daysautorenewal"
-    }, {
-        name: "MTN TV hourly 1 hour",
+        name: "MTN TV 1 HOUR",
         accessTo: "Enjoy unlimited access to all movies, series, and Free Live Channels",
         price: "SSP 80",
-        validityPeriod: "1 day",
+        validityPeriod: "1 hour",
         uid: "mtntv1hour",
         id: "953",
         hasAutorenewal: false,
-    }, {
-        name: "MTN TV 3 days",
-        accessTo: "Enjoy unlimited access to all movies, series, and Free Live Channels",
-        price: "SSP 1200",
-        validityPeriod: "3 years",
-        uid: "mtntv3days",
-        id: "944",
-        hasAutorenewal: true,
-        autorenewalId: "1007",
-        autorenewalUid: "mtntv3daysautorenewal"
-    }, {
-        name: "MTN TV Daily 24 hours",
+    },
+    {
+        name: "MTN TV DAILY",
         accessTo: "Enjoy unlimited access to all movies, series, and Free Live Channels",
         price: "SSP 500",
         validityPeriod: "1 day",
@@ -47,7 +18,40 @@ export const NETWORK_PACKAGES = [
         hasAutorenewal: true,
         autorenewalId: "1006",
         autorenewalUid: "mtntv24hoursautorenewal"
-    }
+    },
+    {
+        name: "MTN TV 3 DAYS",
+        accessTo: "Enjoy unlimited access to all movies, series, and Free Live Channels",
+        price: "SSP 1200",
+        validityPeriod: "3 days",
+        uid: "mtntv3days",
+        id: "944",
+        hasAutorenewal: true,
+        autorenewalId: "1007",
+        autorenewalUid: "mtntv3daysautorenewal"
+    },
+    {
+        name: "MTN TV 7 DAYS",
+        accessTo: "Enjoy unlimited access to all movies, series, and Free Live Channels",
+        price: "SSP 2500",
+        validityPeriod: "7 days",
+        uid: "mtntv7days",
+        id: "966",
+        hasAutorenewal: true,
+        autorenewalId: "1008",
+        autorenewalUid: "mtntv7daysautorenewal"
+    },
+    {
+        name: "MTN TV 30 DAYS",
+        accessTo: "Enjoy unlimited access to all movies, series, and Free Live Channels",
+        price: "SSP 9000",
+        validityPeriod: "30 days",
+        uid: "mtntv30days",
+        id: "962",
+        hasAutorenewal: true,
+        autorenewalId: "1009",
+        autorenewalUid: "mtntv30daysautorenewal"
+    },
 ]
 
 export const NON_NETWORK_PACKAGES = [
