@@ -21,7 +21,7 @@ const Packages = () => {
     const [purchasing, setPurchasing] = useState(false)
     const [selectedPackage, setSelectedPackage] = useState({})
     const [onProceed, setOnProceed] = useState(false)
-    const [subscriptionType, setSubscriptionType] = useState('');
+    const [subscriptionType, setSubscriptionType] = useState('auto-renewal');
 
     const handleCheckboxChange = (e) => {
         if (e.target.name === 'autorenewal' && e.target.checked) {
