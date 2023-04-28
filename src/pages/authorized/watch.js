@@ -111,11 +111,12 @@ const Watch = () => {
     }
 
     const setProgressInMs = (e) => {
-        // console.warn("setProgressInMs", e.currentTime)
-        const _lengthWatchedInMs = (e.currentTime * 100).toFixed(0) * 10
-        setLengthWatchedInMs(_lengthWatchedInMs)
-        initSendPlayLogs(e.currentTime.toFixed(0))
-        setSecondsPlayed(e.currentTime.toFixed(0))
+        if (e.currentTime) {
+            const _lengthWatchedInMs = (e.currentTime * 100).toFixed(0) * 10
+            setLengthWatchedInMs(_lengthWatchedInMs)
+            initSendPlayLogs(e.currentTime.toFixed(0))
+            setSecondsPlayed(e.currentTime.toFixed(0))
+        }
     }
 
     const initSendPlayLogs = async (x) => {

@@ -6,7 +6,7 @@ import LiveTVCard from "../Cards/LiveTVCard"
 const LiveTVCarousel = ({ maxLines = 2, showTitles = false, channel, items = [], title }) => {
     // if (items.length < 1 || !title) return (<></>)
 
-    // console.log(channel)
+    console.log('.... channel', channel)
 
     return (
         <>
@@ -24,7 +24,7 @@ const LiveTVCarousel = ({ maxLines = 2, showTitles = false, channel, items = [],
 
                                 if (_epg.length > 0) _vod.shows = _epg[0].shows
 
-                                // console.log("_VOD", _vod)
+                                console.log(capitalizeString(title) === 'Sports', _vod)
 
                                 return (
                                     <LiveTVCard

@@ -9,9 +9,12 @@ const LiveTVCard = ({ content, showTitles, maxLines, isGridItem, subtitle, id })
     const [channelInfo, setChannelInfo] = useState({})
     const [epgInfo, setEPGInfo] = useState({ start: '00:00', end: '00:00', title: '' })
 
+    // console.log('content ---> ->', content)
+
     useEffect(() => {
         const initFetchChannelInfo = async () => {
             setChannelInfo(await getChannelInfo(content.id))
+            console.log('content ---> ->', await getChannelInfo(content.id))
         }
 
         const initSetDates = async () => {
